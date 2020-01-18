@@ -29,11 +29,11 @@ class ApplicantController extends Controller
     {
         $user = User::findOrFail(Auth::id());
 
-        if (Storage::disk('public')->exists("profile/$user->profile_picture")) {
-            Storage::disk('public')->delete("profile/$user->profile_picture");
+        if (Storage::disk('public_uploads')->exists("profile/$user->profile_picture")) {
+            Storage::disk('public_uploads')->delete("profile/$user->profile_picture");
         }
 
-        $path = Storage::disk('public')->put('profile', $request->profile_picture);
+        $path = Storage::disk('public_uploads')->put('profile', $request->profile_picture);
         $name = substr($path, 8);
 
         $user->profile_picture = $name;
@@ -99,7 +99,7 @@ class ApplicantController extends Controller
         
         if($request->hasFile('ffaa_file')){
 
-            $path = Storage::disk('public')->put('applicant', $request->ffaa_file);
+            $path = Storage::disk('public_uploads')->put('applicant', $request->ffaa_file);
             $name = substr($path, 10);
     
             $applicant->ffaa_file = $name;
@@ -107,7 +107,7 @@ class ApplicantController extends Controller
 
         if($request->hasFile('disability_file')){
 
-            $path = Storage::disk('public')->put('applicant', $request->disability_file);
+            $path = Storage::disk('public_uploads')->put('applicant', $request->disability_file);
             $name = substr($path, 10);
     
             $applicant->disability_file = $name;
@@ -130,8 +130,8 @@ class ApplicantController extends Controller
         $applicant = Applicant::where('user_id', Auth::id())->firstOrFail();
 
         if($applicant->ffaa_file == $request->ffaa_file_name){
-            if (Storage::disk('public')->exists("applicant/$request->ffaa_file_name")) {
-                Storage::disk('public')->delete("applicant/$request->ffaa_file_name");
+            if (Storage::disk('public_uploads')->exists("applicant/$request->ffaa_file_name")) {
+                Storage::disk('public_uploads')->delete("applicant/$request->ffaa_file_name");
                 $applicant->ffaa_file = null;
                 $applicant->update();
             }
@@ -139,8 +139,8 @@ class ApplicantController extends Controller
 
         if($applicant->disability_file == $request->disability_file_name){
 
-            if (Storage::disk('public')->exists("applicant/$request->disability_file_name")) {
-                Storage::disk('public')->delete("applicant/$request->disability_file_name");
+            if (Storage::disk('public_uploads')->exists("applicant/$request->disability_file_name")) {
+                Storage::disk('public_uploads')->delete("applicant/$request->disability_file_name");
                 $applicant->disability_file = null;
                 $applicant->update();
             }

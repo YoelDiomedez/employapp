@@ -49,7 +49,7 @@
                             <td>{{ $training->hours }}</td>
                             <td>
                                 @if($training->file)
-                                <a href="{{ asset('storage/training/'.$training->file) }}" class="btn dark btn-outline" target="_blank">
+                                <a href="{{ asset('uploads/training/'.$training->file) }}" class="btn dark btn-outline" target="_blank">
                                     <i class="fa fa-file-pdf-o"></i>
                                 </a>
                                 @else

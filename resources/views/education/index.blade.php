@@ -60,7 +60,7 @@
 
                             <td>
                                 @if($e->degree_file)
-                                <a href="{{ asset('storage/education/'.$e->degree_file) }}" class="btn dark btn-outline" target="_blank">
+                                <a href="{{ asset('uploads/education/'.$e->degree_file) }}" class="btn dark btn-outline" target="_blank">
                                     <i class="fa fa-file-pdf-o"></i>
                                 </a>
                                 @else

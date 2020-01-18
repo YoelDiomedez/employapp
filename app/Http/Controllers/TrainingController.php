@@ -60,7 +60,7 @@ class TrainingController extends Controller
 
         if($request->hasFile('file')){
 
-            $path = Storage::disk('public')->put('training', $request->file);
+            $path = Storage::disk('public_uploads')->put('training', $request->file);
             $name = substr($path, 9);
     
             $training->file = $name;
@@ -110,11 +110,11 @@ class TrainingController extends Controller
 
         if($request->hasFile('file')){
 
-            if (Storage::disk('public')->exists("training/$training->file")) {
-                Storage::disk('public')->delete("training/$training->file");
+            if (Storage::disk('public_uploads')->exists("training/$training->file")) {
+                Storage::disk('public_uploads')->delete("training/$training->file");
             }
 
-            $path = Storage::disk('public')->put('training', $request->file);
+            $path = Storage::disk('public_uploads')->put('training', $request->file);
             $name = substr($path, 9);
     
             $training->file = $name;
@@ -137,8 +137,8 @@ class TrainingController extends Controller
         $training = Training::where('user_id', Auth::id())
                             ->where('id', $id)->firstOrFail();
 
-        if (Storage::disk('public')->exists("training/$training->file")) {
-            Storage::disk('public')->delete("training/$training->file");
+        if (Storage::disk('public_uploads')->exists("training/$training->file")) {
+            Storage::disk('public_uploads')->delete("training/$training->file");
         }
 
         $training->delete();
@@ -157,7 +157,7 @@ class TrainingController extends Controller
         $training = Training::where('user_id', Auth::id())
                             ->where('id', $id)->firstOrFail();
  
-        Storage::disk('public')->delete("training/$training->file");
+        Storage::disk('public_uploads')->delete("training/$training->file");
          
         $training->file = null;
         $training->update();

@@ -13,7 +13,7 @@
                 </h4>
             </div>
             <div class="modal-body">
-                <embed src="{{ asset('storage/experience/'.$experience->file) }}" type="application/pdf" width="100%" height="500">
+                <embed src="{{ asset('uploads/experience/'.$experience->file) }}" type="application/pdf" width="100%" height="500">
             </div>
             <div class="modal-footer">
                 {{ Form::submit('Eliminar', ['class' => 'btn btn-danger']) }}

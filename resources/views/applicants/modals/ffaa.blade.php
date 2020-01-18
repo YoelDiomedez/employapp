@@ -13,7 +13,7 @@
                 </h4>
             </div>
             <div class="modal-body">
-                <embed src="{{ asset('storage/applicant/'.$applicant->ffaa_file) }}" type="application/pdf" width="100%" height="500">
+                <embed src="{{ asset('uploads/applicant/'.$applicant->ffaa_file) }}" type="application/pdf" width="100%" height="500">
                 {{ Form::hidden('ffaa_file_name', $applicant->ffaa_file)  }}
             </div>
             <div class="modal-footer">

@@ -15,7 +15,7 @@
                 </h4>
             </div>
             <div class="modal-body">
-                <embed src="{{ asset('storage/document/'.$document->dni_file) }}" type="application/pdf" width="100%" height="500">
+                <embed src="{{ asset('uploads/document/'.$document->dni_file) }}" type="application/pdf" width="100%" height="500">
                     {{ Form::hidden('dni_file', $document->dni_file)  }}
             </div>
             <div class="modal-footer">

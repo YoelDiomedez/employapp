@@ -53,7 +53,7 @@ class ExperienceController extends Controller
 
         if($request->hasFile('file')){
 
-            $path = Storage::disk('public')->put('experience', $request->file);
+            $path = Storage::disk('public_uploads')->put('experience', $request->file);
             $name = substr($path, 11);
     
             $experience->file = $name;
@@ -99,11 +99,11 @@ class ExperienceController extends Controller
 
         if($request->hasFile('file')){
 
-            if (Storage::disk('public')->exists("experience/$experience->file")) {
-                Storage::disk('public')->delete("experience/$experience->file");
+            if (Storage::disk('public_uploads')->exists("experience/$experience->file")) {
+                Storage::disk('public_uploads')->delete("experience/$experience->file");
             }
 
-            $path = Storage::disk('public')->put('experience', $request->file);
+            $path = Storage::disk('public_uploads')->put('experience', $request->file);
             $name = substr($path, 11);
     
             $experience->file = $name;
@@ -126,8 +126,8 @@ class ExperienceController extends Controller
         $experience = Experience::where('user_id', Auth::id())
                                 ->where('id', $id)->firstOrFail();
 
-        if (Storage::disk('public')->exists("experience/$experience->file")) {
-            Storage::disk('public')->delete("experience/$experience->file");
+        if (Storage::disk('public_uploads')->exists("experience/$experience->file")) {
+            Storage::disk('public_uploads')->delete("experience/$experience->file");
         }
 
         $experience->delete();
@@ -146,7 +146,7 @@ class ExperienceController extends Controller
         $experience = Experience::where('user_id', Auth::id())
                                 ->where('id', $id)->firstOrFail();
  
-        Storage::disk('public')->delete("experience/$experience->file");
+        Storage::disk('public_uploads')->delete("experience/$experience->file");
          
         $experience->file = null;
         $experience->update();

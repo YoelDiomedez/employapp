@@ -38,7 +38,7 @@
                     @if(!Auth::user()->profile_picture)
                     <img src="{{ asset('assets/layouts/layout2/img/user_default.png') }}" class="img-responsive" alt=""> 
                     @else
-                    <img src="{{ asset('storage/profile/'.Auth::user()->profile_picture) }}" class="img-responsive" alt=""> 
+                    <img src="{{ asset('ploads/profile/'.Auth::user()->profile_picture) }}" class="img-responsive" alt=""> 
                     @endif
                 </div>
                 <!-- END SIDEBAR USERPIC -->

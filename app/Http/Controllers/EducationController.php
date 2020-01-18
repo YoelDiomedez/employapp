@@ -64,7 +64,7 @@ class EducationController extends Controller
 
         if($request->hasFile('degree_file')){
 
-            $path = Storage::disk('public')->put('education', $request->degree_file);
+            $path = Storage::disk('public_uploads')->put('education', $request->degree_file);
             $name = substr($path, 10);
     
             $education->degree_file = $name;
@@ -116,11 +116,11 @@ class EducationController extends Controller
 
         if($request->hasFile('degree_file')){
 
-            if (Storage::disk('public')->exists("education/$education->degree_file")) {
-                Storage::disk('public')->delete("education/$education->degree_file");
+            if (Storage::disk('public_uploads')->exists("education/$education->degree_file")) {
+                Storage::disk('public_uploads')->delete("education/$education->degree_file");
             }
 
-            $path = Storage::disk('public')->put('education', $request->degree_file);
+            $path = Storage::disk('public_uploads')->put('education', $request->degree_file);
             $name = substr($path, 10);
     
             $education->degree_file = $name;
@@ -143,8 +143,8 @@ class EducationController extends Controller
         $education = Education::where('user_id', Auth::id())
                               ->where('id', $id)->firstOrFail();
 
-        if (Storage::disk('public')->exists("education/$education->degree_file")) {
-            Storage::disk('public')->delete("education/$education->degree_file");
+        if (Storage::disk('public_uploads')->exists("education/$education->degree_file")) {
+            Storage::disk('public_uploads')->delete("education/$education->degree_file");
         }
         
         $education->delete();
@@ -163,7 +163,7 @@ class EducationController extends Controller
        $education = Education::where('user_id', Auth::id())
                              ->where('id', $id)->firstOrFail();
 
-        Storage::disk('public')->delete("education/$education->degree_file");
+        Storage::disk('public_uploads')->delete("education/$education->degree_file");
         
         $education->degree_file = null;
         $education->update();

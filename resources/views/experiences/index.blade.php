@@ -45,7 +45,7 @@
                             <td class="uppercase">{{ Carbon\Carbon::parse($experience->end_date)->formatLocalized('%d de %B de %Y') }}</td>
                             <td>
                                 @if($experience->file)
-                                <a href="{{ asset('storage/experience/'.$experience->file) }}" class="btn dark btn-outline" target="_blank">
+                                <a href="{{ asset('uploads/experience/'.$experience->file) }}" class="btn dark btn-outline" target="_blank">
                                     <i class="fa fa-file-pdf-o"></i>
                                 </a>
                                 @else

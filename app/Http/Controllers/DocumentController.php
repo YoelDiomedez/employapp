@@ -35,7 +35,7 @@ class DocumentController extends Controller
         
         if($request->hasFile('affidavit_file')){
 
-            $path = Storage::disk('public')->put('document', $request->affidavit_file);
+            $path = Storage::disk('public_uploads')->put('document', $request->affidavit_file);
             $name = substr($path, 9);
     
             $document->affidavit_file = $name;
@@ -43,7 +43,7 @@ class DocumentController extends Controller
 
         if($request->hasFile('dni_file')){
 
-            $path = Storage::disk('public')->put('document', $request->dni_file);
+            $path = Storage::disk('public_uploads')->put('document', $request->dni_file);
             $name = substr($path, 9);
     
             $document->dni_file = $name;
@@ -51,7 +51,7 @@ class DocumentController extends Controller
 
         if($request->hasFile('vacancy_file')){
 
-            $path = Storage::disk('public')->put('document', $request->vacancy_file);
+            $path = Storage::disk('public_uploads')->put('document', $request->vacancy_file);
             $name = substr($path, 9);
     
             $document->vacancy_file = $name;
@@ -59,7 +59,7 @@ class DocumentController extends Controller
 
         if($request->hasFile('aditional_file')){
 
-            $path = Storage::disk('public')->put('document', $request->aditional_file);
+            $path = Storage::disk('public_uploads')->put('document', $request->aditional_file);
             $name = substr($path, 9);
     
             $document->aditional_file = $name;
@@ -81,29 +81,29 @@ class DocumentController extends Controller
         $document = Document::where('user_id', Auth::id())->firstOrFail();
 
         if($request->affidavit_file){
-            if (Storage::disk('public')->exists("document/$document->affidavit_file")) {
-                Storage::disk('public')->delete("document/$document->affidavit_file");
+            if (Storage::disk('public_uploads')->exists("document/$document->affidavit_file")) {
+                Storage::disk('public_uploads')->delete("document/$document->affidavit_file");
                 $document->affidavit_file = null;
             }
         }
 
         if($request->dni_file){
-            if (Storage::disk('public')->exists("document/$document->dni_file")) {
-                Storage::disk('public')->delete("document/$document->dni_file");
+            if (Storage::disk('public_uploads')->exists("document/$document->dni_file")) {
+                Storage::disk('public_uploads')->delete("document/$document->dni_file");
                 $document->dni_file = null;
             }
         }
 
         if($request->vacancy_file){
-            if (Storage::disk('public')->exists("document/$document->vacancy_file")) {
-                Storage::disk('public')->delete("document/$document->vacancy_file");
+            if (Storage::disk('public_uploads')->exists("document/$document->vacancy_file")) {
+                Storage::disk('public_uploads')->delete("document/$document->vacancy_file");
                 $document->vacancy_file = null;
             }
         }
 
         if($request->aditional_file){
-            if (Storage::disk('public')->exists("document/$document->aditional_file")) {
-                Storage::disk('public')->delete("document/$document->aditional_file");
+            if (Storage::disk('public_uploads')->exists("document/$document->aditional_file")) {
+                Storage::disk('public_uploads')->delete("document/$document->aditional_file");
                 $document->aditional_file = null;
             }
         }
