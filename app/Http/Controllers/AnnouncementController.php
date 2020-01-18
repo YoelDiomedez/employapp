@@ -103,7 +103,7 @@ class AnnouncementController extends Controller
 
         if($request->hasFile('bases')){
 
-            $path = Storage::disk('public')->put('announcement', $request->bases);
+            $path = Storage::disk('public_uploads')->put('announcement', $request->bases);
             $name = substr($path, 13);
     
             $announcement->bases = $name;

@@ -19,7 +19,7 @@
                 </h4>
             </div>
             <div class="modal-body">
-                <embed src="{{ asset('storage/announcement/'.$announcement->bases) }}" type="application/pdf" width="100%" height="500">
+                <embed src="{{ asset('uploads/announcement/'.$announcement->bases) }}" type="application/pdf" width="100%" height="500">
                     {{ Form::hidden('bases', $announcement->bases)  }}
             </div>
             <div class="modal-footer">
