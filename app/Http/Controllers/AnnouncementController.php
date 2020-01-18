@@ -111,7 +111,7 @@ class AnnouncementController extends Controller
 
         if($request->hasFile('annexes')){
 
-            $path = Storage::disk('public')->put('announcement', $request->annexes);
+            $path = Storage::disk('public_uploads')->put('announcement', $request->annexes);
             $name = substr($path, 13);
     
             $announcement->annexes = $name;
@@ -181,7 +181,7 @@ class AnnouncementController extends Controller
 
         if($request->hasFile('bases')){
 
-            $path = Storage::disk('public')->put('announcement', $request->bases);
+            $path = Storage::disk('public_uploads')->put('announcement', $request->bases);
             $name = substr($path, 13);
     
             $announcement->bases = $name;
@@ -189,7 +189,7 @@ class AnnouncementController extends Controller
 
         if($request->hasFile('annexes')){
 
-            $path = Storage::disk('public')->put('announcement', $request->annexes);
+            $path = Storage::disk('public_uploads')->put('announcement', $request->annexes);
             $name = substr($path, 13);
     
             $announcement->annexes = $name;
@@ -197,7 +197,7 @@ class AnnouncementController extends Controller
 
         if($request->hasFile('partial_results')){
 
-            $path = Storage::disk('public')->put('announcement', $request->partial_results);
+            $path = Storage::disk('public_uploads')->put('announcement', $request->partial_results);
             $name = substr($path, 13);
     
             $announcement->partial_results = $name;
@@ -205,7 +205,7 @@ class AnnouncementController extends Controller
 
         if($request->hasFile('final_results')){
 
-            $path = Storage::disk('public')->put('announcement', $request->final_results);
+            $path = Storage::disk('public_uploads')->put('announcement', $request->final_results);
             $name = substr($path, 13);
     
             $announcement->final_results = $name;
@@ -232,20 +232,20 @@ class AnnouncementController extends Controller
                                     ->where('company_id', $company->id)
                                     ->firstOrFail();
 
-        if (Storage::disk('public')->exists("announcement/$announcement->bases")) {
-            Storage::disk('public')->delete("announcement/$announcement->bases");
+        if (Storage::disk('public_uploads')->exists("announcement/$announcement->bases")) {
+            Storage::disk('public_uploads')->delete("announcement/$announcement->bases");
         }
 
-        if (Storage::disk('public')->exists("announcement/$announcement->annexes")) {
-            Storage::disk('public')->delete("announcement/$announcement->annexes");
+        if (Storage::disk('public_uploads')->exists("announcement/$announcement->annexes")) {
+            Storage::disk('public_uploads')->delete("announcement/$announcement->annexes");
         }
 
-        if (Storage::disk('public')->exists("announcement/$announcement->partial_results")) {
-            Storage::disk('public')->delete("announcement/$announcement->partial_results");
+        if (Storage::disk('public_uploads')->exists("announcement/$announcement->partial_results")) {
+            Storage::disk('public_uploads')->delete("announcement/$announcement->partial_results");
         }
 
-        if (Storage::disk('public')->exists("announcement/$announcement->final_results")) {
-            Storage::disk('public')->delete("announcement/$announcement->final_results");
+        if (Storage::disk('public_uploads')->exists("announcement/$announcement->final_results")) {
+            Storage::disk('public_uploads')->delete("announcement/$announcement->final_results");
         }
 
         $announcement->delete();
@@ -271,29 +271,29 @@ class AnnouncementController extends Controller
                                     ->firstOrFail();
 
         if($request->bases){
-            if (Storage::disk('public')->exists("announcement/$announcement->bases")) {
-                Storage::disk('public')->delete("announcement/$announcement->bases");
+            if (Storage::disk('public_uploads')->exists("announcement/$announcement->bases")) {
+                Storage::disk('public_uploads')->delete("announcement/$announcement->bases");
                 $announcement->bases = null;
             }
         }
 
         if($request->annexes){
-            if (Storage::disk('public')->exists("announcement/$announcement->annexes")) {
-                Storage::disk('public')->delete("announcement/$announcement->annexes");
+            if (Storage::disk('public_uploads')->exists("announcement/$announcement->annexes")) {
+                Storage::disk('public_uploads')->delete("announcement/$announcement->annexes");
                 $announcement->annexes = null;
             }
         }
 
         if($request->partial_results){
-            if (Storage::disk('public')->exists("announcement/$announcement->partial_results")) {
-                Storage::disk('public')->delete("announcement/$announcement->partial_results");
+            if (Storage::disk('public_uploads')->exists("announcement/$announcement->partial_results")) {
+                Storage::disk('public_uploads')->delete("announcement/$announcement->partial_results");
                 $announcement->partial_results = null;
             }
         }
 
         if($request->final_results){
-            if (Storage::disk('public')->exists("announcement/$announcement->final_results")) {
-                Storage::disk('public')->delete("announcement/$announcement->final_results");
+            if (Storage::disk('public_uploads')->exists("announcement/$announcement->final_results")) {
+                Storage::disk('public_uploads')->delete("announcement/$announcement->final_results");
                 $announcement->final_results = null;
             }
         }
@@ -349,8 +349,8 @@ class AnnouncementController extends Controller
         } else { // 0 false Finaliza la Convocatoria
 
             if (
-                Storage::disk('public')->exists("announcement/$announcement->partial_results") && 
-                Storage::disk('public')->exists("announcement/$announcement->final_results") &&
+                Storage::disk('public_uploads')->exists("announcement/$announcement->partial_results") && 
+                Storage::disk('public_uploads')->exists("announcement/$announcement->final_results") &&
                 $announcement->partial_results != null &&
                 $announcement->final_results   != null
             ) {

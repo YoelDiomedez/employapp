@@ -87,7 +87,7 @@
                                     <div class="col-lg-7 col-md-7 col-sm-6 col-xs-6">
                                         <p>
                                             @if($announcement->bases != null)
-                                                <a href="{{ asset('storage/announcement/'.$announcement->bases) }}" target="_blank" class="text-danger" data-toggle="tooltip" data-placement="right" title="Ver / Descargar Bases">
+                                                <a href="{{ asset('uploads/announcement/'.$announcement->bases) }}" target="_blank" class="text-danger" data-toggle="tooltip" data-placement="right" title="Ver / Descargar Bases">
                                                     <i class="fa fa-2x fa-file-pdf-o"></i>
                                                 </a>
                                             @else
@@ -100,7 +100,7 @@
                                     <div class="col-lg-7 col-md-7 col-sm-6 col-xs-6">
                                         <p>
                                             @if($announcement->annexes != null)
-                                                <a href="{{ asset('storage/announcement/'.$announcement->annexes) }}" target="_blank">COMUNICADO</a>
+                                                <a href="{{ asset('uploads/announcement/'.$announcement->annexes) }}" target="_blank">COMUNICADO</a>
                                             @else
                                                 -
                                             @endif
@@ -111,7 +111,7 @@
                                     <div class="col-lg-7 col-md-7 col-sm-6 col-xs-6">
                                         <p>
                                             @if($announcement->partial_results != null)
-                                                <a href="{{ asset('storage/announcement/'.$announcement->partial_results) }}" target="_blank">RESULTADO EVALUACION CV</a>
+                                                <a href="{{ asset('uploads/announcement/'.$announcement->partial_results) }}" target="_blank">RESULTADO EVALUACION CV</a>
                                             @else
                                                 -
                                             @endif
@@ -122,7 +122,7 @@
                                     <div class="col-lg-7 col-md-7 col-sm-6 col-xs-6">
                                         <p>
                                             @if($announcement->final_results != null)
-                                                <a href="{{ asset('storage/announcement/'.$announcement->final_results) }}" target="_blank">RESULTADO FINAL</a>
+                                                <a href="{{ asset('uploads/announcement/'.$announcement->final_results) }}" target="_blank">RESULTADO FINAL</a>
                                             @else
                                                 -
                                             @endif
