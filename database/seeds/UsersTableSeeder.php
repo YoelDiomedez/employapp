@@ -21,7 +21,7 @@ class UsersTableSeeder extends Seeder
             'birth_date'       => '1995-10-06',
             'gender'           => 'M',
             'email'            => 'yoeldiomedez@gmail.com',
-            'password'         => bcrypt('secret'),
+            'password'         => bcrypt('password'),
         ]);
 
         $user->roles()->sync([1]);
