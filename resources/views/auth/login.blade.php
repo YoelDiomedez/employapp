@@ -30,9 +30,9 @@
             ¿Olvidate tu Contraseña?
         </a>
     </div>
-    <div class="create-account">
+    <div class="create-account bg-dark">
         <p>
-            <a href="{{ route('register') }}" id="register-btn" class="uppercase">
+            <a href="{{ route('register') }}" id="register-btn" class="uppercase bg-font-dark">
                 Crea una cuenta
             </a>
         </p>

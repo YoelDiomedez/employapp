@@ -51,20 +51,20 @@ License: You must have a valid license purchased only from themeforest(the above
 
     <body class="login">
         <!-- BEGIN LOGO -->
-        <div class="logo">
+        <div  style="text-align: center;">
             <a href="/">
-                <img src="{{ asset('assets/pages/img/logo-big.png') }}" alt="" /> 
+                <img src="{{ asset('img/employapp-logo.png') }}" alt="Logo Login" /> 
             </a>
         </div>
         <!-- END LOGO -->
         <!-- BEGIN LOGIN -->
-        <div class="content">
+        <div class="content" style="margin-top: 0px;">
 
             @yield('content')
             
         </div>
-        <div class="copyright"> 
-            &copy; {{ date('Y') }} 
+        <div class="copyright font-white"> 
+            © {{ date('Y') }} Yoel Diomedez Apps
         </div>
         @section('scripts')
         <!--[if lt IE 9]>
@@ -78,10 +78,27 @@ License: You must have a valid license purchased only from themeforest(the above
         <script src="{{ asset('assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('assets/global/plugins/jquery.blockui.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('assets/global/plugins/backstretch/jquery.backstretch.min.js') }}" type="text/javascript"></script>
         <!-- END CORE PLUGINS -->
         <!-- BEGIN THEME GLOBAL SCRIPTS -->
         <script src="{{ asset('assets/global/scripts/app.min.js') }}" type="text/javascript"></script>
         <!-- END THEME GLOBAL SCRIPTS -->
+        <script>
+            $(document).ready( function () {
+                $.backstretch(
+                    [
+                        "{{ asset('img/background/1.jpg') }}", 
+                        "{{ asset('img/background/2.jpg') }}", 
+                        "{{ asset('img/background/3.jpg') }}", 
+                        "{{ asset('img/background/4.jpg') }}"
+                    ],
+                    {
+                        fade: 1e3,
+                        duration: 8e3
+                    }
+                )
+            })
+        </script>
         @show
     </body>
 </html>
